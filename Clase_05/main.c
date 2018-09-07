@@ -6,32 +6,35 @@
 #define false 0
 #define true 1
 
-int mostrarArray(int* pArray[], int limite);
+//int mostrarArray(int* pArray[], int limite);
 
 int main()
 {
 
     int edades[CANTIDAD_EMPLEADOS];
-    // salario -> devuelve la direccion de memoria del primer elemento array de salario => &salario[0]
     int i;
-    int maximo;
 
-    /*for(i=0;i<CANTIDAD_EMPLEADOS;i++){
-        if(utn_getEntero(&edades[i], 2, "\nEdad", "\nEdad fuera de rango", 0, 200 ) == -1)
+    for(i=0;i < CANTIDAD_EMPLEADOS;i++)
+    {
+        if(utn_getEntero(&edades[i],2,"\nEdad?","\nEdad fuera de rango",0,200)==-1)
         {
-            edades[i] = -1;
+            edades[i] = DATO_INVALIDO;
         }
-    }*/
+    }
+
     //mostrarArray(edades, CANTIDAD_EMPLEADOS);
 
     //mostrarArray(edades+2, CANTIDAD_EMPLEADOS-2);
 
     //calcularMaximo(edades, CANTIDAD_EMPLEADOS, &maximo);
 
-    initArray(edades, CANTIDAD_EMPLEADOS, 50);
-    mostrarArray(edades, CANTIDAD_EMPLEADOS);
+    //initArray(edades, CANTIDAD_EMPLEADOS, 50);
 
     //printf("\nMaximo: %d", maximo);
+    ordenar(edades, CANTIDAD_EMPLEADOS, 1);
+    mostrarArray(edades, CANTIDAD_EMPLEADOS);
+
+
 
     return 0;
 }
@@ -52,15 +55,18 @@ int initArray(int* pArray, int limite, int valor)
 }
 
 
-int mostrarArray(int* pArray[], int limite)
+int mostrarArray(int* pArray, int limite)
 {
     int i;
-    for(i=0; i< limite; i++){
-        printf("\nIndex: %d] - Value:%d -Add: %p", i, pArray[i], pArray+i);
+    for(i=0;i<limite;i++)
+    {
+        printf("\nIndex:%d - Value:%d - Add: %p",i,pArray[i],&pArray[i]);
+
     }
     return 0;
 }
 
+/*
 int calcularMaximo(int* pArray[], int limite, int* pMaximo){
     int retorno;
     int i;
@@ -73,7 +79,7 @@ int calcularMaximo(int* pArray[], int limite, int* pMaximo){
         {
             auxMaximo = pArray[i];
         }
-    }*/
+    }*//*
     for(i=0;i<limite;i++){
         if(pArray[i] != DATO_INVALIDO){
             if(flagPrimerMaximo == false)
@@ -88,5 +94,25 @@ int calcularMaximo(int* pArray[], int limite, int* pMaximo){
 
     //*pMaximo = auxMaximo;
     return 0;
-}
+}*/
 
+int ordenar(int* pArray, int limite, int mayorMenor){
+    int i;
+    int aux;
+    int flag = 1;
+
+    while(flag == 1){
+        flag = 0;
+        for(i=0; i<limite-1; i++){
+            if(( mayorMenor == 0 && pArray[i] > pArray[i+1] ) ||
+                (mayorMenor == 1 && pArray[i] < pArray[i+1]) ){
+
+                aux = pArray[i];
+                pArray[i] = pArray[i+1];
+                pArray[i+1] = aux;
+                flag = 1;
+            }
+        }
+    }
+    return 0;
+}
