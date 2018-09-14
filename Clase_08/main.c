@@ -45,6 +45,28 @@ void printPersona(Persona* p)
     //p.edad = 99 //NO
 }
 
+void altaPersona(Persona* per)
+{
+	char nombreAux[70];
+	int edadAux;
+	float alturaAux;
+
+	if(utn_getNombre(nombreAux, ... ) == 0)
+	{
+		if(utn_getEntero(&edadAux, ...) == 0)
+		{
+			if(utn_getFloat(&alturaAux, ...) == 0)
+			{
+				//cargo la struct
+				per->altura = alturaAux;
+				per->edad = edadAux;
+				strncpy(per->nombre, nombreAux, 70);				
+			}
+		}
+	}
+
+}
+
     /*
     int edades[CANTIDAD_EMPLEADOS];
     int i;
