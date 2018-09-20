@@ -50,12 +50,13 @@ void altaPersona(Persona* per)
 	char nombreAux[70];
 	int edadAux;
 	float alturaAux;
-
-	if(utn_getNombre(nombreAux, ... ) == 0)
+int utn_getEntero(int* pEdad,int reintentos,char* msg,
+                  char*msgErr,int min, int max)
+	if(utn_getNombre(nombreAux,  ) == 0)
 	{
-		if(utn_getEntero(&edadAux, ...) == 0)
+		if(utn_getEntero(&edadAux, 3, "Ingrese una edad", "La edad es invalida",0, 199) == 0)
 		{
-			if(utn_getFloat(&alturaAux, ...) == 0)
+			if(utn_getFloat(&alturaAux, 3, "Ingrese una altura", "El rango de altura es incorrecto", 0, 2.50) == 0)
 			{
 				//cargo la struct
 				per->altura = alturaAux;
