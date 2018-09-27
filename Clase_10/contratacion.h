@@ -19,4 +19,5 @@ int buscarPorCuitEIdP(Contratacion* contrataciones,int lenContrataciones, int cu
 int modificarContratacion(Contratacion* contrataciones,int lenContrataciones, int indexCont);
 int bajaContratacion(Contratacion* contrataciones,int len, int indexCont);
 int consultaFacturacion(Contratacion* contrataciones,int lenContrataciones, int cuitCliente, Pantalla* pantallas, int lenPantallas);
+int imprimirContrataciones(Contratacion* contrataciones,int lenContrataciones, Pantalla* pantallas, int lenPantalla);
 #endif // CONTRATACION_H_INCLUDED

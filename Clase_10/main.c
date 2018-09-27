@@ -26,6 +26,7 @@ int main()
 
     cont_alta_forzada(contrataciones, CANT_CONTRATACIONES, "Coca cola", 0, 11111, 21);
     cont_alta_forzada(contrataciones, CANT_CONTRATACIONES, "jumbomp4", 1, 11111, 40);
+    //cont_alta_forzada(contrataciones, CANT_CONTRATACIONES, "asdaf", 1, 11111, 50);
     cont_alta_forzada(contrataciones, CANT_CONTRATACIONES, "telecentro", 2, 22222, 15);
 
     //imprimirPantallas(pantallas, CANT_PANTALLAS);
@@ -45,7 +46,7 @@ int main()
     int indexCont;
     do
     {
-        utn_getEntero(&opcion, 50, "\n1)alta\n2)modificacion\n3)listar\n4)baja\n5)Contratar publicidad\n6)Modificar contratacion\n7)Cancelar Contratacion\n8)Consulta Facturacion\n9)salir\n", "no!\n",1,9);
+        utn_getEntero(&opcion, 50, "\n1)alta\n2)modificacion\n3)listar\n4)baja\n5)Contratar publicidad\n6)Modificar contratacion\n7)Cancelar Contratacion\n8)Consulta Facturacion\n9)Listar Contrataciones\n10)Listar Contrataciones\n11)salir\n", "no!\n",1,11);
 
     switch(opcion)
     {
@@ -120,9 +121,16 @@ int main()
             utn_getEntero(&cuitCliente, 5, "\nIngrese cuit: ", "error!\n", 0, 999999999);
             float totalFacturacion = consultaFacturacion(contrataciones, CANT_CONTRATACIONES, cuitCliente, pantallas, CANT_PANTALLAS);
             printf("Total: $%.2f", totalFacturacion);
+            break;
+        case 9:
+            imprimirContrataciones(contrataciones, CANT_CONTRATACIONES, pantallas, CANT_PANTALLAS);
+            break;
+        case 10:
+            listarContratacionesPorCliente(contrataciones, CANT_CONTRATACIONES, pantallas, CANT_PANTALLAS);
+            break;
         }
     }
-    while(opcion != 9);
+    while(opcion != 11);
 
     return 0;
 }

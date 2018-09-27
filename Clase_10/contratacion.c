@@ -89,7 +89,7 @@ void listarPantallasCliente(Contratacion* contrataciones,int lenContrataciones, 
         if(contrataciones[i].cuil == cuitCliente && contrataciones[i].isEmpty != 1)
         {
             int p = buscarPantallaPorId(pantallas, lenPantallas, contrataciones[i].idPantalla);
-            imprimirPantalla(pantallas[p], lenPantallas);
+            imprimirPantalla(pantallas[p], p);
         }
     }
 }
@@ -137,11 +137,67 @@ int consultaFacturacion(Contratacion* contrataciones,int lenContrataciones, int 
         if(contrataciones[i].cuil == cuitCliente && contrataciones[i].isEmpty == 0)
         {
             int p = buscarPantallaPorId(pantallas, lenPantallas, contrataciones[i].idPantalla);
-            accTotal += pantallas[p].precio;
+            accTotal += (pantallas[p].precio * contrataciones[i].dias);
+
+            printf("Contratacion :%d, importe $%.2f\n", contrataciones[i].id, (pantallas[p].precio * contrataciones[i].dias) );
         }
     }
     return accTotal;
 }
+
+int imprimirContrataciones(Contratacion* contrataciones,int lenContrataciones, Pantalla* pantallas, int lenPantalla)
+{
+    int retorno= -1;
+    int i;
+    for(i = 0; i< lenContrataciones;i++)
+    {
+        if(contrataciones[i].isEmpty != 1)
+        {
+            printf("\nContratacion nº: %d\n", i);
+            int p = buscarPantallaPorId(pantallas, lenPantalla, contrataciones[i].idPantalla);
+            printf("nombre de la pantalla: %s\n", pantallas[i].nombre);
+            printf("nombre video: %s\n", contrataciones[i].nombreVideo);
+            printf("cantidad de dias: %d\n", contrataciones[i].dias);
+            printf("cuil cliente: %d\n", contrataciones[i].cuil);
+            retorno = 0;
+        }
+    }
+    return retorno;
+}
+
+void listarContratacionesPorCliente(Contratacion* contrataciones, int lenC, Pantalla* pantallas, int lenP)
+{
+    int i;
+    for(i = 0; i<lenC;i++)
+    {
+        if(contrataciones[i].isEmpty == 0)
+        {
+            int cant = getCantidadDeContrataciones(contrataciones, lenC, contrataciones[i].cuil);
+            printf("Cliente %d\n", contrataciones[i].cuil);
+            printf("Cantidad de contrataciones: %d\n", cant);
+        }
+    }
+}
+
+int getCantidadDeContrataciones(Contratacion* contrataciones, int len, int cuil)
+{
+    int cont = 0;
+    int i;
+    for(i=0; i<len; i++)
+    {
+        if(contrataciones[i].cuil == cuil  && contrataciones[i].isEmpty == 0)
+        {
+            cont++;
+        }
+    }
+    return cont;
+}
+
+/*int getClienteConMayorImporte(Contratacion* c, int lenC, Pantalla* p, int lenP)
+{
+
+}/*
+
 
 /**************************************************/
 
@@ -150,6 +206,3 @@ static int generarID(void)
     static int contID=-1;
     return ++contID;
 }
-
-
-
