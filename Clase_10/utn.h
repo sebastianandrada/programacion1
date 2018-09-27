@@ -1,12 +1,12 @@
 
 #ifndef UTN_H_INCLUDED
 #define UTN_H_INCLUDED
-typedef struct{
+/*typedef struct{
     char nombre[15];
     int edad;
     float altura;
     char dni;
-}Persona;
+}Persona;*/
 /**
     utn_getentero : Pide un numero entero al usuario
     @param pEdad : puntero a edad
@@ -81,5 +81,5 @@ int utn_ordenarArray(int *pArray,int limite,int flagMaxMin);
 int utn_getFloat(float*pFloat,int reintentos,char* msg,char*msgError,float min,float max);
 int utn_getLetras(char *pBuffer,int limite,int reintentos,char* msj,char*msjError);
 int ordenarInsertion(int* pArray,int limite);
-int printPersona(Persona* pBuffer);
-int utn_altaPersona(Persona* pPersona,int reintentos,int lenString,int min,int max);
+/*int printPersona(Persona* pBuffer);
+int utn_altaPersona(Persona* pPersona,int reintentos,int lenString,int min,int max);*/

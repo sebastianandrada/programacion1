@@ -3,7 +3,8 @@
 #include "utn.h"
 #include <string.h>
 
-static void imprimirPantalla(Pantalla p, int indice);
+
+static int generarID(void);
 
 int initPantallas(Pantalla* pp, int length, int valor)
 {
@@ -70,7 +71,7 @@ int getIndiceVacio(Pantalla* pp,int length)
     return retorno;
 }
 
-int generarID(void)
+static int generarID(void)
 {
     static int contID=-1;
     return ++contID;
@@ -100,7 +101,7 @@ int altaPantalla(Pantalla*pp,int indice,int length)
     return 0;
 }
 
-static int buscarPantallaPorId(Pantalla* pp, int len, int id)
+int buscarPantallaPorId(Pantalla* pp, int len, int id)
 {
     int i;
     int ret = -1;
@@ -152,3 +153,20 @@ int bajaPantalla(Pantalla* pp, int len, int id)
     return ret;
 
 }
+
+void pan_alta_forzada(Pantalla* pp, int len, char* nombre, int tipo, float precio)
+{
+    int index = getIndiceVacio(pp, len);
+    if(index >= 0)
+    {
+        pp[index].tipo = tipo;
+        pp[index].precio = precio;
+
+        strncpy(pp[index].nombre, nombre, 32);
+
+        pp[index].isEmpty = 0;
+        pp[index].id = generarID();
+    }
+}
+
+

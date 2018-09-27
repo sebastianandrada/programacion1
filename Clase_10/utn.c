@@ -284,7 +284,7 @@ int ordenarInsertion(int* pArray,int limite){
         *(pArray+j+1)=temp;
     }
     return 0;
-}
+}/*
 int printPersona(Persona *pBuffer){
     printf("\tNombre\taltura\tedad:\n\n");
     printf("\t%s\t%.2f\t%d",pBuffer->nombre,pBuffer->altura,pBuffer->edad);
@@ -295,4 +295,4 @@ int utn_altaPersona(Persona* pPersona,int reintentos,int lenString,int min,int m
     utn_getEntero(&pPersona->edad,reintentos,"Ingrese la edad: ","Error intente nuevamente : ",min,max);
     utn_getFloat(&pPersona->altura,reintentos,"Ingrese su altura: ","Error amiguito: ",0,3);
     return 0;
-}
+}*/
