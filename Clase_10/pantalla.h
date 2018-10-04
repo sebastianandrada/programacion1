@@ -18,5 +18,7 @@ int bajaPantalla(Pantalla* pp, int len, int id);
 int buscarPantallaPorId(Pantalla* pp, int len, int id);
 void pan_alta_forzada(Pantalla* pp, int len, char* nombre, int tipo, float precio);
 void imprimirPantalla(Pantalla p, int indice);
+void sortPantallasPorPrecio(Pantalla* pp, int len, int orden);
+void sortPantallasPorNombre(Pantalla* pp, int len, int orden);
 
 #endif // PANTALLA_H_INCLUDED

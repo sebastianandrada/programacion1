@@ -23,6 +23,7 @@ int main()
     pan_alta_forzada(pantallas, CANT_PANTALLAS, "Cabildo", 0, 123.4);
     pan_alta_forzada(pantallas, CANT_PANTALLAS, "Rosario", 1, 489.7);
     pan_alta_forzada(pantallas, CANT_PANTALLAS, "PuebloUno", 0, 222.2);
+    pan_alta_forzada(pantallas, CANT_PANTALLAS, "Accenture", 1, 31.4);
 
     cont_alta_forzada(contrataciones, CANT_CONTRATACIONES, "Coca cola", 0, 11111, 21);
     cont_alta_forzada(contrataciones, CANT_CONTRATACIONES, "jumbomp4", 1, 11111, 40);
@@ -46,7 +47,7 @@ int main()
     int indexCont;
     do
     {
-        utn_getEntero(&opcion, 50, "\n1)alta\n2)modificacion\n3)listar\n4)baja\n5)Contratar publicidad\n6)Modificar contratacion\n7)Cancelar Contratacion\n8)Consulta Facturacion\n9)Listar Contrataciones\n10)Listar Contrataciones\n11)salir\n", "no!\n",1,11);
+        utn_getEntero(&opcion, 50, "\n1)alta\n2)modificacion\n3)listar\n4)baja\n5)Contratar publicidad\n6)Modificar contratacion\n7)Cancelar Contratacion\n8)Consulta Facturacion\n9)Listar Contrataciones\n10)Listar Contrataciones\n11)salir\n", "no!\n",1,18);
 
     switch(opcion)
     {
@@ -128,9 +129,16 @@ int main()
         case 10:
             listarContratacionesPorCliente(contrataciones, CANT_CONTRATACIONES, pantallas, CANT_PANTALLAS);
             break;
+        case 11:
+            sortPantallasPorPrecio(pantallas, CANT_PANTALLAS, 1);
+            imprimirPantallas(pantallas, CANT_PANTALLAS);
+            break;
+        case 12:
+            sortPantallasPorNombre(pantallas, CANT_PANTALLAS, 0);
+            imprimirPantallas(pantallas, CANT_PANTALLAS);
         }
     }
-    while(opcion != 11);
+    while(opcion != 15);
 
     return 0;
 }

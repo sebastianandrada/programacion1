@@ -20,4 +20,5 @@ int modificarContratacion(Contratacion* contrataciones,int lenContrataciones, in
 int bajaContratacion(Contratacion* contrataciones,int len, int indexCont);
 int consultaFacturacion(Contratacion* contrataciones,int lenContrataciones, int cuitCliente, Pantalla* pantallas, int lenPantallas);
 int imprimirContrataciones(Contratacion* contrataciones,int lenContrataciones, Pantalla* pantallas, int lenPantalla);
+void listarContratacionesPorCliente(Contratacion* contrataciones, int lenC, Pantalla* pantallas, int lenP);
 #endif // CONTRATACION_H_INCLUDED

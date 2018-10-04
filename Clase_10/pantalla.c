@@ -169,4 +169,64 @@ void pan_alta_forzada(Pantalla* pp, int len, char* nombre, int tipo, float preci
     }
 }
 
+/**
+0 ascendente
+1 descendente
+*/
 
+void sortPantallasPorPrecio(Pantalla* pp, int len, int orden)
+{
+    int i, j;
+    Pantalla temp;
+    for(i = 0; i<len; i++)
+    {
+        temp = pp[i];
+        j = i -1;
+        while(j >= 0 && ((orden == 0 && temp.precio < pp[j].precio) || (orden == 1 && temp.precio > pp[j].precio)))
+        {
+            pp[j+1] = pp[j];
+            j--;
+        }
+        pp[j+1] = temp;
+    }
+}
+
+void sortPantallasPorNombre(Pantalla* pp, int len, int orden)
+{
+    int i, j;
+    Pantalla temp;
+    for(i = 0; i<len; i++)
+    {
+        temp = pp[i];
+        j = i -1;
+        while(j >= 0 && ( ( orden == 0 && (strncmp(temp.nombre, pp[j].nombre, 32) < 0))
+            || (orden == 1 && (strncmp(temp.nombre, pp[j].nombre, 32) > 0))))
+        {
+            pp[j+1] = pp[j];
+            j--;
+        }
+        pp[j+1] = temp;
+    }
+}
+
+int informar_listadoPantallas(Pantalla* pp, int len)
+{
+    int retorno = -1;
+    if(len != NULL && len > 0)
+    {
+        //pantalla_mostrarDebug
+    }
+    return retorno;
+}
+
+
+
+/*void listarPantallasValorMenorA10(Pantalla* pantallas, int len)
+{
+    int i;
+    int cont = 0;
+    for(i=0;i<len;i++)
+    {
+
+    }
+}*/
