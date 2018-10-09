@@ -56,11 +56,11 @@ int main()
                 }
                 break;
             case 4:
-                /*if(utn_getInt(&id, 10, "Ingrese id de cliente a borrar", "Id invalido", 0, CANT_CLIENTES) == 0 && esClienteValido(clientes, CANT_CLIENTES, id))
+                if(utn_getInt(&id, 10, "Ingrese id de cliente a borrar", "Id invalido", 0, CANT_CLIENTES) == 0 && !esClienteValido(clientes, CANT_CLIENTES, id))
                 {
-                altaDeVenta(ventas, CANT_VENTAS, id);
-                }*/
-                altaVenta(ventas, CANT_VENTAS);
+                    altaDeVenta(ventas, CANT_VENTAS, id);
+                }
+                //altaVenta(ventas, CANT_VENTAS);
                 break;
             case 5:
                 imprimirVentas(ventas, CANT_VENTAS);

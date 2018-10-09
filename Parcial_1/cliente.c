@@ -175,8 +175,6 @@ int esClienteValido(Cliente* clientes, int len, int idCliente)
     }
     return retorno;
 }
-
-/***********estaticas****************/
 int getClienteById(Cliente* clientes, int len, int id)
 {
     int retorno = -1;
@@ -192,6 +190,11 @@ int getClienteById(Cliente* clientes, int len, int id)
     return retorno;
 }
 
+/***********estaticas****************/
+/** \brief genera un id distinto en cada invocacion
+* \return int id generado
+*
+*/
 static int generarID(void)
 {
     static int contID=-1;

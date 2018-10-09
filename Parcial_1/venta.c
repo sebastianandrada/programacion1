@@ -22,7 +22,7 @@ int initVentas(Venta* ventas, int len, int valor)
     return retorno;
 }
 
-int altaVenta(Venta* ventas, int len)
+/* int altaVenta(Venta* ventas, int len)
 {
     int retorno = -1;
     int auxCantidadAfiches;
@@ -51,7 +51,7 @@ int altaVenta(Venta* ventas, int len)
         }
     }
     return retorno;
-}
+} */
 
 void imprimirVentas(Venta* ventas, int len)
 {
@@ -183,22 +183,6 @@ int eliminarVentasDeCliente(Venta* ventas, int len, int idCliente)
     return retorno;
 }
 
-/*************estaticas************************/
-static int getIndiceVacioVentas(Venta* ventas,int len)
-{
-    int i;
-    int retorno=-1;
-    for (i=0; i<len; i++)
-    {
-        if(ventas[i].aCobrar==0)
-        {
-            retorno=i;
-            break;
-        }
-    }
-    return retorno;
-}
-
 int getVentaById(Venta* ventas, int len, int id)
 {
     int retorno = -1;
@@ -214,6 +198,33 @@ int getVentaById(Venta* ventas, int len, int id)
     return retorno;
 }
 
+/*************estaticas************************/
+/** \brief Retorna el primer indice vacio del array (aquel que tiene aCobrar == FALSE)
+* 
+* \param ventas puntero a array de ventas
+* \param len tamaño del array de ventas
+* \return int Return (-1) si hubo error - indice vacio
+*
+*/
+static int getIndiceVacioVentas(Venta* ventas,int len)
+{
+    int i;
+    int retorno=-1;
+    for (i=0; i<len; i++)
+    {
+        if(ventas[i].aCobrar==0)
+        {
+            retorno=i;
+            break;
+        }
+    }
+    return retorno;
+}
+
+/** \brief genera un id distinto en cada invocacion
+* \return int id generado
+*
+*/
 static int generarID(void)
 {
     static int contID=-1;
