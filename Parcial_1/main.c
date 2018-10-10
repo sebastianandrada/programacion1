@@ -46,14 +46,21 @@ int main()
                 }
                 break;
             case 3:
-                utn_getInt(&id, 10, "Ingrese id de cliente a borrar ", "Id invalido", 0, CANT_CLIENTES);
-                utn_getInt(&quiereEliminar, 10, "Esta seguro/a? \n1)Si\n2)No\nElija una opcion: ", "Opcion invalida", 0, 2);
-                if(quiereEliminar)
+                if(utn_getInt(&id, 10, "Ingrese id de cliente a borrar ", "Id invalido", 0, CANT_CLIENTES) == 0 && !esClienteValido(clientes, CANT_CLIENTES, id))
                 {
-                    eliminarCliente(clientes, CANT_CLIENTES, id);
-                    eliminarVentasDeCliente(ventas, CANT_VENTAS, id);
-                    printf("Baja exitosa!");
+                    utn_getInt(&quiereEliminar, 10, "Esta seguro/a? \n1)Si\n2)No\nElija una opcion: ", "Opcion invalida", 0, 2);
+                    if(quiereEliminar)
+                    {
+                        eliminarCliente(clientes, CANT_CLIENTES, id);
+                        eliminarVentasDeCliente(ventas, CANT_VENTAS, id);
+                        printf("Baja exitosa!");
+                    }
+                } 
+                else
+                {
+                    printf("Id invalido");
                 }
+                
                 break;
             case 4:
                 if(utn_getInt(&id, 10, "Ingrese id de cliente a borrar", "Id invalido", 0, CANT_CLIENTES) == 0 && !esClienteValido(clientes, CANT_CLIENTES, id))

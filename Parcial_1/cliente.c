@@ -82,7 +82,7 @@ int altaCliente(Cliente* clientes, int len)
     {
         if (utn_getString(auxApellido, 5, "Ingrese un apellido: \n", "Dato invalido\n", 32) == 0)
         {
-            if (utn_getInt(&auxCuit, 5, "Ingrese el cuit\n", "Dato invalido\n", 0, 403702290) == 0)
+            if (utn_getInt(&auxCuit, 5, "Ingrese el cuit\n", "Dato invalido\n", 0, 999999999) == 0)
             {
                 clientes[index].id = generarID();
                 clientes[index].isEmpty = 0;
