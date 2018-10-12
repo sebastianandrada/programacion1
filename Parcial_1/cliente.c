@@ -38,8 +38,6 @@ void imprimirClientes(Cliente* clientes, int len)
 
 void imprimirCliente(Cliente c)
 {
-    if(c.isEmpty == 0)
-    {
         printf("\nid: %d\nNombre: %s\nApellido: %s\ncuit: %d\nisEmpty: %d\n",
 
                c.id,
@@ -48,11 +46,6 @@ void imprimirCliente(Cliente c)
                c.cuit,
                c.isEmpty
               );
-    }
-    else
-    {
-        printf("El cliente con id %d no esta cargado \n", c.id);
-    }
 }
 
 int getIndiceVacio(Cliente* clientes,int len)
