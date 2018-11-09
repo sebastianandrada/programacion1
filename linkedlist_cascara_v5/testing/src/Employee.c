@@ -19,6 +19,11 @@ int compareEmployee(void* pEmployeeA,void* pEmployeeB)
 
 }
 
+int employeeSalary(void* pEmployeeA)
+{
+    return ((Employee*)pEmployeeA)->salary  > 4000;
+}
+
 void printEmployee(Employee* p)
 {
     printf("Nombre:%s Salario:%.2f\r\n",p->name,p->salary);

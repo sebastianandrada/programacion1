@@ -22,6 +22,7 @@
 #include <string.h>
 #include "../testing/inc/main_test.h"
 #include "../inc/LinkedList.h"
+#include "../testing/inc/Employee.h"
 
 
 int main(void)
@@ -45,6 +46,41 @@ int main(void)
         startTesting(17); // ll_subList
         startTesting(18); // ll_clone
         startTesting(19); // ll_sort */
+
+        /*
+            ll_startIter()
+            ll_getNext()
+            accede con flecha al siguiente elemento
+        */
+/*
+        static char* unsortedList[] = {"Za","Zb","Xd","Xb","Ya","Yc"};
+static int sector[] = {1,1,2,3,4,6};
+static float salary[] = {1001,2000,1002,3000,4000,8000};
+static float salarySortedUp[] = {8000,4000,3000,2000,1002,1001};
+static int id[] = {11,20,3,4,9,99};
+        void filterTest(void)
+{
+    LinkedList* list;
+    Employee* pAux[6];
+    Employee* pEmp;
+    LinkedList* listaFiltrada;
+    int i;
+
+    list = ll_newLinkedList();
+    for(i=0; i < 6; i++)
+    {
+        pAux[i] = newEmployee(id[i],unsortedList[i],unsortedList[i],salary[i],sector[i]);
+        ll_add(list,pAux[i]);
+    }
+
+    listaFiltrada = ll_filter(list, employeeSalary);
+    for(i=0; i< 6; i++)
+    {
+        pEmp = ll_get(listaFiltrada, i);
+        printEmployee(pEmp);
+    }
+
+}*/
 
     return 0;
 }

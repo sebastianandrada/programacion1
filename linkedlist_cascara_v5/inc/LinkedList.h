@@ -22,6 +22,7 @@ struct Node
 {
     void* pElement;
     struct Node* pNextNode;
+
 }typedef Node;
 
 struct LinkedList
