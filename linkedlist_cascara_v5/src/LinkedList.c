@@ -580,17 +580,46 @@ LinkedList* ll_filter(LinkedList* this, int (*pFunc)(void*))
 
 Node* ll_startIter(LinkedList* lista)
 {
+    lista->nodoActual = lista->pFirstNode;
     return lista->pFirstNode;
 }
 
-void* ll_getNext(LinkedList* lista)
+/*Node* ll_set_startIterator(LinkedList* lista, Node* node)
 {
 
-    static Node* nodeGlobal;
-    nodeGlobal = ll_startIter(lista);
-    void* auxEl = nodeGlobal->pElement;
-    nodeGlobal = nodeGlobal->pNextNode;
-    return auxEl;
+}
+*/
+Node* ll_getNext(LinkedList* lista)
+{
+
+    Node* nodeAux;
+    nodeAux = lista->nodoActual;
+    /*if(lista->nodoActual->pNextNode != NULL)
+    {*/
+        lista->nodoActual = lista->nodoActual->pNextNode;
+    //}
+
+    return nodeAux;
 }
 
+void ll_map(LinkedList* this, int (*pFunc)(void*))
+{
+    Node* it;
+    it = ll_startIter(this);
+    Node* pNodeAux;
+    if(this != NULL)
+    {
 
+        while(it != NULL)
+        {
+            pNodeAux = ll_getNext(this);
+            if(pNodeAux != NULL && pFunc != NULL)
+            {
+                pFunc(pNodeAux->pElement);
+            }
+            it= this->nodoActual->pNextNode;
+        }
+    }
+}
+
+//strtok strstr

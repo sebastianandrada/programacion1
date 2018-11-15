@@ -29,6 +29,17 @@ void printEmployee(Employee* p)
     printf("Nombre:%s Salario:%.2f\r\n",p->name,p->salary);
 }
 
+int printEmployee2(void* p)
+{
+    int retorno = -1;
+    if(p != NULL)
+    {
+        printf("Nombre:%s Salario:%.2f\r\n",((Employee*)p)->name,((Employee*)p)->salary);
+        retorno = 1;
+    }
+    return retorno;
+}
+
 /** \brief Set this employee the values recived as parameters
  *
  * \param pEmployee employee*
@@ -60,3 +71,13 @@ Employee* newEmployee(int id, char name[],char lastName[],float salary,int secto
 
 }
 
+int aumentarSalarioEn5000(void* pEmployee)
+{
+    int retorno = -1;
+    if(pEmployee != NULL)
+    {
+        ((Employee*)pEmployee)->salary += 5000;
+        retorno = 1;
+    }
+    return retorno;
+}

@@ -23,11 +23,37 @@
 #include "../testing/inc/main_test.h"
 #include "../inc/LinkedList.h"
 #include "../testing/inc/Employee.h"
-
+static char* unsortedList[] = {"Za","Zb","Xd","Xb","Ya","Yc"};
+static int sector[] = {1,1,2,3,4,6};
+static float salary[] = {1001,2000,1002,3000,4000,8000};
+static float salarySortedUp[] = {8000,4000,3000,2000,1002,1001};
+static int id[] = {11,20,3,4,9,99};
 
 int main(void)
 {
-        startTesting(1);  // ll_newLinkedList
+    int r;
+    int i;
+    LinkedList* list;
+    Employee* pAux[6];
+
+    list = ll_newLinkedList();
+    for(i=0; i < 6; i++)
+    {
+        pAux[i] = newEmployee(id[i],unsortedList[i],unsortedList[i],salary[i],sector[i]);
+        //printEmployee(pAux[i]);
+        ll_add(list,pAux[i]);
+    }
+
+    printf("********************funcion map********\n");
+    ll_map(list, printEmployee2);
+
+    printf("*****************aumento sueldo***************\n");
+    ll_map(list, aumentarSalarioEn5000);
+
+    printf("********************funcion map********\n");
+    ll_map(list, printEmployee2);
+
+        /*startTesting(1);  // ll_newLinkedList
         startTesting(2);  // ll_len
         startTesting(3);  // getNode - test_getNode
         startTesting(4);  // addNode - test_addNode
@@ -52,35 +78,7 @@ int main(void)
             ll_getNext()
             accede con flecha al siguiente elemento
         */
-/*
-        static char* unsortedList[] = {"Za","Zb","Xd","Xb","Ya","Yc"};
-static int sector[] = {1,1,2,3,4,6};
-static float salary[] = {1001,2000,1002,3000,4000,8000};
-static float salarySortedUp[] = {8000,4000,3000,2000,1002,1001};
-static int id[] = {11,20,3,4,9,99};
-        void filterTest(void)
-{
-    LinkedList* list;
-    Employee* pAux[6];
-    Employee* pEmp;
-    LinkedList* listaFiltrada;
-    int i;
 
-    list = ll_newLinkedList();
-    for(i=0; i < 6; i++)
-    {
-        pAux[i] = newEmployee(id[i],unsortedList[i],unsortedList[i],salary[i],sector[i]);
-        ll_add(list,pAux[i]);
-    }
-
-    listaFiltrada = ll_filter(list, employeeSalary);
-    for(i=0; i< 6; i++)
-    {
-        pEmp = ll_get(listaFiltrada, i);
-        printEmployee(pEmp);
-    }
-
-}*/
 
     return 0;
 }

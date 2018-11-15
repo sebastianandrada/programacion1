@@ -126,6 +126,7 @@ void sortTestCase05(void)
     for(i=0; i < LENGTH; i++)
     {
         pAux[i] = newEmployee(id[i],unsortedList[i],unsortedList[i],salary[i],sector[i]);
+        printEmployee(pAux[i]);
         ll_add(list,pAux[i]);
     }
     r = ll_sort(list, compareEmployee,-1);
@@ -133,4 +134,19 @@ void sortTestCase05(void)
 
 }
 
+/*void testMapEmployee(void)
+{
+    int r;
+    int i;
+    LinkedList* list;
+    Employee* pAux[LENGTH];
 
+    list = ll_newLinkedList();
+    printf("**********Funcion map****************");
+    for(i=0; i < LENGTH; i++)
+    {
+        pAux[i] = newEmployee(id[i],unsortedList[i],unsortedList[i],salary[i],sector[i]);
+        printEmployee(pAux[i]);
+        ll_add(list,pAux[i]);
+    }
+}*/
