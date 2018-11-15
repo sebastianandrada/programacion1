@@ -1,3 +1,6 @@
+#ifndef EMPLEADO_H_INCLUDED
+#define EMPLEADO_H_INCLUDED
+
 typedef struct
 {
   int id;
@@ -21,5 +24,7 @@ int Empleado_getHorasTrabajadas(Empleado* this,int* horasTrabajadas);
 
 int Empleado_setSueldo(Empleado* this,int sueldo);
 int Empleado_getSueldo(Empleado* this,int* sueldo);
+
+void em_calcularSueldo(void* p);
 
 #endif // EMPLEADO_H_INCLUDED
