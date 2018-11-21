@@ -40,12 +40,12 @@ int main()
         //ll_map(listaEmpleados,em_calcularSueldo);
 
         // Generar archivo de salida
-        if(generarArchivoSueldos("sueldos.csv",listaEmpleados)==1)
+        /*if(generarArchivoSueldos("sueldos.csv",listaEmpleados)==1)
         {
             printf("Archivo generado correctamente\n");
         }
         else
-            printf("Error generando archivo\n");
+            printf("Error generando archivo\n");*/
     }
     else
         printf("Error leyando empleados\n");

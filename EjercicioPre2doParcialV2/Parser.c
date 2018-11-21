@@ -5,15 +5,18 @@
 
 int parser_parseEmpleados(char *fileName, LinkedList *listaEmpleados)
 {
-    int flagOnce = 1;
     int retorno = -1;
     Empleado *auxEmpleado;
-    char *bufferStr;
-    FILE* pFile;
+    FILE *pFile;
 
-    char* bufferId;
-    char* bufferName;
-    char* bufferHorasTrabajadas;
+    char *bufferId;
+    char *bufferName;
+    char *bufferHorasTrabajadas;
+    char* delim = " , ";
+    char* delim2 = "\n";
+    int valueF;
+    int contadorEntradas = 0;
+    char line[1024];
 
     pFile = fopen(fileName, "r");
 
@@ -22,37 +25,29 @@ int parser_parseEmpleados(char *fileName, LinkedList *listaEmpleados)
         printf("\nEl archivo no puede ser abierto");
         return -1;
     }
-    else
-    {
-        while (!feof(pFile))
-        {
-            if (flagOnce)
-            {
-                fscanf(pFile, "%s\n", bufferId);
-                flagOnce = 0;
-            }
-            if (fscanf(pFile, "%[^,],%[^,],%[^\n]\n",
-                       bufferId,
-                       bufferName,
-                       bufferHorasTrabajadas) == 3)
-            {
-                auxEmpleado = Empleado_newConParametros(
-                    bufferId,
-                    bufferName,
-                    bufferHorasTrabajadas,
-                    "0");
 
-                if (auxEmpleado != NULL)
-                {
-                    ll_add(listaEmpleados, auxEmpleado);
-                    retorno = 0;
-                }
-            }
+    fscanf(pFile, "%[^\n]\n", line);
+    while(!feof(pFile))
+    {
+        valueF = fscanf(pFile, "%[^\n]\n",line);
+        if(valueF != 1)
+        {
+            break;
         }
+        bufferId = strtok(line, delim);
+        bufferName = strtok(NULL, delim);
+        bufferHorasTrabajadas = strtok(NULL, delim2);
+        auxEmpleado = Empleado_newConParametros(bufferId, bufferName, bufferHorasTrabajadas, "0");
+        if(auxEmpleado != NULL)
+        {
+            contadorEntradas++;
+            ll_add(listaEmpleados, auxEmpleado);
+            retorno = 0;
+        }
+        printf("Se cargaron %d empleados. \n", contadorEntradas);
     }
 
     fclose(pFile);
-
     return retorno; // OK
 }
 
