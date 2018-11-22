@@ -42,10 +42,10 @@ int parser_parseEmpleados(char *fileName, LinkedList *listaEmpleados)
         {
             contadorEntradas++;
             ll_add(listaEmpleados, auxEmpleado);
-            retorno = 0;
+            retorno = 1;
         }
-        printf("Se cargaron %d empleados. \n", contadorEntradas);
     }
+    printf("Se cargaron %d empleados. \n", contadorEntradas);
 
     fclose(pFile);
     return retorno; // OK

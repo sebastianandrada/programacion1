@@ -31,21 +31,23 @@ int main()
 
     // Crear lista empledos
     //...
+    listaEmpleados = ll_newLinkedList();
 
     // Leer empleados de archivo data.csv
     if(parser_parseEmpleados("data.csv",listaEmpleados)==1)
     {
         // Calcular sueldos
         printf("Calculando sueldos de empleados\n");
-        //ll_map(listaEmpleados,em_calcularSueldo);
+        ll_map(listaEmpleados,em_calcularSueldo);
+        ll_map(listaEmpleados, em_printEmpleado);
 
         // Generar archivo de salida
-        /*if(generarArchivoSueldos("sueldos.csv",listaEmpleados)==1)
+        if(generarArchivoSueldos("sueldos.csv",listaEmpleados)==1)
         {
             printf("Archivo generado correctamente\n");
         }
         else
-            printf("Error generando archivo\n");*/
+            printf("Error generando archivo\n");
     }
     else
         printf("Error leyando empleados\n");
@@ -56,5 +58,29 @@ int main()
 
 int generarArchivoSueldos(char* fileName,LinkedList* listaEmpleados)
 {
-    return 1;
+    FILE* pFile = fopen(fileName, "w");
+    int retorno = -1;
+    Empleado* auxEmpleado;
+    int auxId;
+    char auxNombre[128];
+    int auxHoras;
+    int auxSueldo;
+    int i;
+    int len = ll_len(listaEmpleados);
+    if(pFile != NULL)
+    {
+        fprintf(pFile,  "id,nombre,horas_trabajadas,sueldo\n");
+        for(i=0;i<len;i++)
+        {
+            auxEmpleado = ll_get(listaEmpleados, i);
+            Empleado_getId(auxEmpleado, &auxId);
+            Empleado_getNombre(auxEmpleado, auxNombre);
+            Empleado_getHorasTrabajadas(auxEmpleado, &auxHoras);
+            Empleado_getSueldo(auxEmpleado, &auxSueldo);
+            fprintf(pFile, "%d,%s,%d,%d\n", auxId, auxNombre, auxHoras, auxSueldo);
+        }
+        retorno = 1;
+    }
+    fclose(pFile);
+    return retorno;
 }

@@ -25,6 +25,7 @@ int Empleado_getHorasTrabajadas(Empleado* this,int* horasTrabajadas);
 int Empleado_setSueldo(Empleado* this,int sueldo);
 int Empleado_getSueldo(Empleado* this,int* sueldo);
 
-void em_calcularSueldo(void* p);
+int em_calcularSueldo(void* p);
+int em_printEmpleado(void* p);
 
 #endif // EMPLEADO_H_INCLUDED
